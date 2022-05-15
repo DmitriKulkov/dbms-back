@@ -9,8 +9,6 @@ import { FacultyService } from './faculty.service';
 @Module({
   controllers: [FacultyController],
   providers: [FacultyService],
-  imports: [
-    TypeOrmModule.forFeature([Faculty, StudentFaculty, Students])
-  ]
+  imports: [TypeOrmModule.forFeature([Faculty, StudentFaculty, Students])],
 })
 export class FacultyModule {}

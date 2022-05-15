@@ -6,24 +6,25 @@ import { Students } from './students.entity';
 
 @Injectable()
 export class StudentsService {
-    constructor(@InjectRepository(Students) private studentsRepository: Repository<Students>){}
-    
-    async getAll(){
-        const students = await this.studentsRepository.find()
-        return students;
-    }
+  constructor(
+    @InjectRepository(Students)
+    private studentsRepository: Repository<Students>,
+  ) {}
 
-    async delete(id:number){
-        return await this.studentsRepository.delete(id);
-    }
+  async getAll() {
+    const students = await this.studentsRepository.find();
+    return students;
+  }
 
-    async update(id:number, dto: CreateStudentDto){
-        return await this.studentsRepository.update(id, {...dto});
-    }
+  async delete(id: number) {
+    return await this.studentsRepository.delete(id);
+  }
 
-    async create(dto: CreateStudentDto){
-        return await this.studentsRepository.save({...dto});
-    }
+  async update(id: number, dto: CreateStudentDto) {
+    return await this.studentsRepository.update(id, { ...dto });
+  }
 
-
+  async create(dto: CreateStudentDto) {
+    return await this.studentsRepository.save({ ...dto });
+  }
 }

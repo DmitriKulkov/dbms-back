@@ -1,8 +1,8 @@
-import { Students } from "src/students/students.entity";
+import { Students } from 'src/students/students.entity';
 
-export class CreateExamsDto{
-    id:number;
-    name:string;
-    result: number;
-    student_id: Students;
+export class CreateExamsDto {
+  id: number;
+  name: string;
+  result: number;
+  student_id: number;
 }
