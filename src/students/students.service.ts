@@ -27,4 +27,5 @@ export class StudentsService {
   async create(dto: CreateStudentDto) {
     return await this.studentsRepository.save({ ...dto });
   }
+
 }

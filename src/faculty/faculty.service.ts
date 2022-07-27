@@ -26,4 +26,21 @@ export class FacultyService {
   async create(dto: CreateFacultyDto) {
     return await this.facultyRepository.save({ ...dto });
   }
+
+  async getChart(){
+    const data = await this.facultyRepository.query(
+        `select faculty.name, stud_fac.count 
+        from faculty 
+        join 
+        (
+        select student_faculty.faculty_id, count(students.id)
+        from student_faculty
+        join students
+        on students.id = student_faculty.student_id
+        group by student_faculty.faculty_id
+        ) as stud_fac
+        on faculty.id = stud_fac.faculty_id;`
+    )
+    return data;
+  }
 }

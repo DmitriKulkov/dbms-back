@@ -33,4 +33,9 @@ export class FacultyController {
   update(@Param('id') id: number, @Body() dto: CreateFacultyDto) {
     return this.facultyService.update(id, dto);
   }
+
+  @Get('/chart')
+  getChart(){
+    return this.facultyService.getChart();
+  }
 }

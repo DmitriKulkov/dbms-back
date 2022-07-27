@@ -33,4 +33,10 @@ export class ExamsController {
   update(@Param('id') id: number, @Body() dto: CreateExamsDto) {
     return this.examsService.update(id, dto);
   }
+
+  @Get('/chart')
+  getChart(){
+    return this.examsService.getChart();
+  }
+
 }

@@ -26,4 +26,19 @@ export class ExamsService {
   async create(dto: CreateExamsDto) {
     return await this.examsRepository.save({ ...dto });
   }
+
+  async getChart(){
+    const data = this.examsRepository.query(
+        `select students.name, students.surname, students.patronymic, stud_ex.sum
+        from students
+        join 
+        (
+        select exams.student_id, sum(exams.result)
+        from exams
+        group by exams.student_id
+        ) as stud_ex
+        on students.id = stud_ex.student_id;`
+    )
+    return data;
+  }
 }
